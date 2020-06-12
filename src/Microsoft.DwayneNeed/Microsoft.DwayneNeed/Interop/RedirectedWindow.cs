@@ -162,7 +162,8 @@ namespace Microsoft.DwayneNeed.Interop
             NativeMethods.BitBlt(_hDC, 0, 0, _bitmapWidth, _bitmapHeight, hdcSrc, 0, 0, ROP.SRCCOPY);
             NativeMethods.ReleaseDC(Handle, hdcSrc);
 
-            _interopBitmap.Invalidate();
+            // the interop bitmap can be null here
+            _interopBitmap?.Invalidate();
 
             return _interopBitmap;
         }
